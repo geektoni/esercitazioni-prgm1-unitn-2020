@@ -11,7 +11,7 @@ int main()
 
   // Il contatore i inizia da 2, visto che tutti i numeri sono
   // divisibili per 1
-  for (int i=2; i<numero; i++)
+  for (int i=2; i<numero && numero_primo; i++)
   {
     if (numero%i == 0)
       numero_primo = false;
