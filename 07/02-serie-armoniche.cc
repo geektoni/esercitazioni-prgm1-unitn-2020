@@ -9,7 +9,7 @@ int main()
 
   double risultato = 0.0;
 
-  for (int i = 0; i < N; i++) {
+  for (int i = 1; i < N; i++) {
     risultato += 1.0/i;
   }
 
