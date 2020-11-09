@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
 {
   if (argc != 2)
   {
-    cout << "Usage: sostituzione <input_file>" << endl;
+    cout << "Usage: conta <input_file>" << endl;
     exit(0);
   }
 
