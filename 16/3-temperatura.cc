@@ -7,15 +7,15 @@ using namespace std;
 // bubblesort
 void sort_array(float array [], int length)
 {
-  for(int i=0; i<length; i++)
+  for(int i=0; i<length-1; i++)
   {
-    for (int j=0; j<length; j++)
+    for (int j=0; j<length-1; j++)
     {
-      if (array[i] > array[j])
+      if (array[j] < array[j+1])
       {
-        float tmp = array[i];
-        array[i] = array[j];
-        array[j] = tmp;
+        float tmp = array[j];
+        array[j] = array[j+1];
+        array[j+1] = tmp;
       }
     }
   }
@@ -23,6 +23,12 @@ void sort_array(float array [], int length)
 
 int main(int argc, char * argv [])
 {
+
+  if (argc != 4)
+  {
+    cout << "Usage: temp <file> <dim> <n>" << endl;
+    exit(0);
+  }
 
   fstream input;
   int DIM = atoi(argv[2]);
@@ -34,6 +40,12 @@ int main(int argc, char * argv [])
   int temp_contatore = 0;
 
   input.open(argv[1], ios::in);
+  if (input.fail())
+  {
+    cout << "Il file selezionato non esiste" << endl;
+    exit(0);
+  }
+
   char tmp[256];
   input >> tmp;
   while(!input.eof())
@@ -47,10 +59,11 @@ int main(int argc, char * argv [])
 
   for(int i=0; i<10; i++)
   {
-    cout << temperature[i] << endl;
+    cout << i+1 << ": " << temperature[i] << endl;
   }
 
   delete[] temperature;
+  input.close();
 
   return 0;
 }
