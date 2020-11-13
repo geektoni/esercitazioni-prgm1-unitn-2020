@@ -3,6 +3,8 @@
 #include <fstream>
 using namespace std;
 
+static const int MAX_DATABASE = 100;
+
 struct Studente
 {
   char nome [30];
@@ -13,22 +15,21 @@ struct Studente
 
 void stampa_studente(const Studente & s);
 Studente genera_studente(char nome[], char cognome[], int matricola,float media_ponderata);
-int riempi_database(Studente * database, char file []);
+int riempi_database(Studente * database, char file [], int inseriti);
 
 int main(int argc, char * argv[])
 {
   // Creo il database
-  int N_STUDENTI = atoi(argv[2]);
-  Studente * database = new Studente[N_STUDENTI];
+  Studente * database = new Studente[MAX_DATABASE];
 
   // Riempio il database con il file
   int inseriti = 0;
-  inseriti = riempi_database(database, argv[1]);
+  inseriti = riempi_database(database, argv[1], inseriti);
 
   // Controllo che l'inserimento sia andato a buon fine
   if (inseriti == -1)
   {
-    cout << "Il file con gli studenti non esiste" << endl;
+    cout << "Il file con gli studenti non esiste o il database è pieno" << endl;
     exit(1);
   }
 
@@ -38,12 +39,18 @@ int main(int argc, char * argv[])
   return 0;
 }
 
-int riempi_database(Studente * database, char file [])
+int riempi_database(Studente * database, char file [], int inseriti)
 {
-  int studenti_inseriti = 0;
+  int studenti_inseriti = inseriti;
   fstream input;
   input.open(file, ios::in);
   if (input.fail())
+  {
+    return -1;
+  }
+
+  // Non posso inserire studenti perchè il database è pieno
+  if (inseriti >= MAX_DATABASE)
   {
     return -1;
   }
