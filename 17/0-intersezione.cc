@@ -7,7 +7,7 @@ using namespace std;
 const int MAX_PAROLE = 1000;
 
 // Massimo numero di caratteri presenti in un file
-const int MAX_CARATTERI = 100;
+const int MAX_CARATTERI = 101;
 
 // Questa funzione controlla se esiste questa parola all'interno di un
 // dizionario
