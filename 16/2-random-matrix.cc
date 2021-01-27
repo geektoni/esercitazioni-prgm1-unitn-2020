@@ -32,9 +32,7 @@ int main(int argc, char * argv[])
 
   // IMPORTANTE! Dealloco la matrice generata prima di uscire
   for (int i = 0; i < R; i++) {
-    for (int j = 0; j < C; j++) {
-      delete[] matrix[i];
-    }
+    delete[] matrix[i];
   }
   delete[] matrix;
 
@@ -44,7 +42,7 @@ int main(int argc, char * argv[])
 int ** generate_matrix(int R, int C)
 {
   // Alloco la memoria necessaria per la matrice
-  int ** matrix = new int*[C];
+  int ** matrix = new int*[R];
   for (int i = 0; i < R; i++) {
       matrix[i] = new int[C];
   }
