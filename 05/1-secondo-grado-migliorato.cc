@@ -4,9 +4,9 @@ using namespace std;
 
 int main()
 {
-  int a, b, c;
-  int delta;
-  int soluzione_1, soluzione_2;
+  float a, b, c;
+  float delta;
+  float soluzione_1, soluzione_2;
 
   cout << "Inserire i coefficienti a, b e c (ax^2 + bx + c = 0): ";
   cin >> a >> b >> c;
