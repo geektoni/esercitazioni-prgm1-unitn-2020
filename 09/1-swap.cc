@@ -18,6 +18,10 @@ int main() {
 }
 
 void swap(double * n1, double * n2) {
+
+    // Scambio il valore di n1 e n2 facendo dereference
+    // dei due puntatori originari.
+
     double temp = *n1;
     *n1 = *n2;
     *n2 = temp;

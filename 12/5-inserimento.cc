@@ -10,7 +10,7 @@ void stampa(const int array[], int dim);
 int main() {
 
     srand(time(NULL));
-    
+
     const int DIM = 10;
     int array[DIM];
 
@@ -38,6 +38,10 @@ void inizializza(int array[], int dim) {
 
 void inserisci(int array[], int dim, int elemento, int indice) {
 
+    // Per prima cosa sposto tutti gli elementi in avanti di un posto
+    // (parto dall'ultimo elemento). In questo caso, l'elemento in posizione
+    // dim-1 viene sovrascritto e verrà perso. Alla fine, aggiungo il nuovo
+    // elemento in posizione indice.
     for (int i = dim-1 ; i > indice ; i--) {
         array[i] = array[i-1];
     }

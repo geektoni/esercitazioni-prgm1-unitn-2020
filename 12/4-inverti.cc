@@ -29,6 +29,9 @@ void inizializza(int array[], int dim) {
     }
 }
 
+// Per invertire, è sufficiente scambiare gli elementi della prima
+// metà dell'array (dim/2) con l'altra metà dell'array. In questo modo
+// non ci servono array ausiliari.
 void inverti(int array[], int dim) {
 
     int temp;

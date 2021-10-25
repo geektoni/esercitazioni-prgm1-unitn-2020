@@ -14,16 +14,22 @@ int main() {
 
     quoziente = divisione(dividendo, divisore, resto);
 
-    cout << "Quoziente " << quoziente << ", resto " << resto << endl; 
+    cout << "Quoziente " << quoziente << ", resto " << resto << endl;
     return 0;
 }
 
 int divisione(int dividendo, int divisore, int & resto) {
+
+    // Per fare la divisione, sottraggo al dividendo il divisore fino a che
+    // il dividendo non è minore del divisore (in quel caso, quello è il resto
+    // della mia divisione).
+
     int quoziente = 0;
-    while (dividendo >= divisore) {
+    while (dividendo > divisore) {
         quoziente++;
         dividendo -= divisore;
     }
+
     resto = dividendo;
     return quoziente;
 }

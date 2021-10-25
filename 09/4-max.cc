@@ -1,9 +1,9 @@
 #include <iostream>
 #include <climits>
-#include <algorithm>
 
 using namespace std;
 
+int max(int n1, int n2);
 int massimoFra5(int n1, int n2 = INT_MIN, int n3 = INT_MIN, int n4 = INT_MIN, int n5 = INT_MIN);
 
 int main() {
@@ -21,4 +21,12 @@ int massimoFra5(int n1, int n2, int n3, int n4, int n5) {
     maxValue = max(maxValue, n4);
     maxValue = max(maxValue, n5);
     return maxValue;
+}
+
+int max(int n1, int n2) {
+  if (n1 >= n2) {
+    return n1;
+  } else {
+    return n2;
+  }
 }

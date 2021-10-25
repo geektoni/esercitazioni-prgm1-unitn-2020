@@ -3,7 +3,7 @@
 using namespace std;
 
 bool controllaCarattere(char carattere);
-char converteCarattere(char carattere);
+char convertiCarattere(char carattere);
 
 int main() {
 
@@ -11,10 +11,10 @@ int main() {
     cout << "Inserisci una lettera minuscola: " << endl;
     cin >> carattere;
 
-    bool eLetteraMinuscola = controllaCarattere(carattere);
+    bool is_lowercase = controllaCarattere(carattere);
 
-    if (eLetteraMinuscola) {
-        cout << converteCarattere(carattere);
+    if (is_lowercase) {
+        cout << convertiCarattere(carattere);
     }
 
     return 0;
@@ -30,12 +30,18 @@ bool controllaCarattere(char carattere) {
         risultato = false;
     }
 
+    // Una versione meno prolissa è la seguente:
+    // return carattere <= 'z' && carattere >= 'a'
+
     return risultato;
 }
 
-char converteCarattere(char carattere) {
-    
+char convertiCarattere(char carattere) {
+
+    // Converto il carattere da minuscolo a maiuscolo
+    // usando le caratteristiche della codifica.
+
     char carattereMaiuscolo;
-    carattereMaiuscolo = carattere + ( (int) 'A' -  (int) 'a');
-    return carattereMaiuscolo; 
+    carattereMaiuscolo = carattere + ('A' - 'a');
+    return carattereMaiuscolo;
 }
