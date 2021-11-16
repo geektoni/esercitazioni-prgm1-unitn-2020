@@ -1,46 +1,67 @@
 #include <iostream>
 #include <cstring>
+
 using namespace std;
 
-struct Studente
-{
-  char nome [30];
-  char cognome [30];
-  int matricola;
-  float media;
+struct Studente {
+    char nome[30];
+    char cognome[30];
+    int matricola;
+    float media;
 };
 
 void stampa_studente(const Studente & s);
-Studente genera_studente(char nome[], char cognome[], int matricola,float media_ponderata);
+Studente genera_studente(char nome[], char cognome[], int matricola, float media);
 
-int main()
-{
-  char nome[20], cognome[20];
-  int matricola;
-  float media;
 
-  cin >> nome >> cognome >> matricola >> media;
+int main () {
 
-  Studente s = genera_studente(nome, cognome, matricola, media);
-  stampa_studente(s);
+    char nome[30], cognome[30];
+    int matricola;
+    float media;
+    
+    cin >> nome >> cognome >> matricola >> media;
+    
+    Studente s = genera_studente(nome, cognome, matricola, media);
+    stampa_studente(s);
 
-  return 0;
+    return 0;
 }
 
-void stampa_studente(const Studente & studente)
-{
-  cout << "Studente (" << studente.matricola << "):" << endl;
-  cout << "\tNome: " << studente.nome << endl;
-  cout << "\tCognome: " << studente.cognome << endl;
-  cout << "\tMedia: " << studente.media << endl;
-};
 
-Studente genera_studente(char * nome, char * cognome, int matricola, float media_ponderata)
-{
-  Studente s;
-  strcpy(s.nome, nome);
-  strcpy(s.cognome, cognome);
-  s.matricola = matricola;
-  s.media = media_ponderata;
-  return s;
-};
+void stampa_studente(const Studente & s) {
+    cout << "Studente (matricola: " << s.matricola << ") :" << endl;
+    cout << "\tNome: " << s.nome << endl;
+    cout << "\tCognome: " << s.cognome << endl;
+    cout << "\tMedia: " << s.media << endl;
+}
+
+Studente genera_studente(char * nome, char * cognome, int matricola, float media) {
+    Studente s;
+    s.matricola = matricola;
+    s.media = media;
+    strcpy(s.nome, nome);
+    strcpy(s.cognome, cognome);
+    return s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
