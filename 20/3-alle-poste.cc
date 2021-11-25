@@ -10,29 +10,43 @@ int main() {
     init();
 
     cout << "inserisci: " << endl;
-    cout << "- un nome per aggiungere una persona " << endl;
-    cout << "- 'smaltisci' per smaltire una persona" << endl;
+    cout << "- 'rimuovi' per rimuovere una persona" << endl;
     cout << "- 'stampa' per vedere la coda" << endl;
+    cout << "- 'esci' per terminare il programma" << endl;
+    cout << "- un nome per aggiungere una persona " << endl;
 
-    while (true) {
-        char * input = new char[25];
+    bool esci = false;
+    char input[MAX_DIM];
+
+    while (!esci) {
+        
         cin >> input;
 
-        if (strcmp(input, "smaltisci") == 0) {
-            first(input);
-            dequeue();
-            cout << "abbiamo smaltito " << input << endl;
-            delete input;
+        if (strcmp(input, "rimuovi") == 0) {
+            char * primo;
+            if (first(primo)) {
+                dequeue();
+                cout << "abbiamo rimosso " << primo << endl;
+                delete[] primo;
+            } else {
+                cout << "coda vuota" <<  endl;
+            }
         }
         else if (strcmp(input, "stampa") == 0) {
             cout << "la coda contiene queste persone: " << endl;
             print();
+        }
+        else if (strcmp(input, "esci") == 0) {
+            cout << "Uscita del programma" << endl;
+            esci = true;
         }
         else {
             cout << "abbiamo inserito " << input << " nella coda" << endl;
             enqueue(input);
         }
     }
+
+    deinit();
 
     return 0;
 }

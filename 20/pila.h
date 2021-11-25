@@ -1,9 +1,6 @@
 #ifndef PILA_H
 #define PILA_H
 
-#include <iostream>
-using namespace std;
-
 struct nodo {
 	int value;
 	nodo* next;
@@ -14,5 +11,6 @@ void init();
 bool push(int);
 bool top(int &);
 bool pop();
+void deinit();
 
 #endif

@@ -1,4 +1,8 @@
+#include <iostream>
+#include <cstring>
 #include "coda.h"
+
+using namespace std;
 
 static coda Q;
 
@@ -7,22 +11,22 @@ static bool vuota() {
 }
 
 
-
 void init() {
   Q.head = NULL;
 }
 
 
-
 bool enqueue(char * n) {
   
     bool risultatoOperazione;
-    lista nuovoNodo = new nodo;
+    lista nuovoNodo = new (nothrow) nodo;
+    char * tmp = new (nothrow) char[MAX_DIM];
     if (nuovoNodo==NULL) {
         risultatoOperazione = false;
     }
     else {
-        nuovoNodo->nome=n;
+        strcpy(tmp, n);
+        nuovoNodo->nome=tmp;
         nuovoNodo->next=NULL;
         if (vuota()) {
             Q.head=nuovoNodo;
@@ -65,6 +69,13 @@ bool dequeue() {
     return risultatoOperazione;
 }
 
+void deinit() {
+    char * tmp;
+	while(first(tmp)) {
+        delete[] tmp;
+		dequeue();
+	}
+}
 
 void print() {
 

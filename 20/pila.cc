@@ -1,11 +1,13 @@
+#include <iostream>
 #include "pila.h"
+
+using namespace std;
 
 static lista pila;
 
 static bool vuota () {
 	return (pila == NULL);    
 }
-
 
 
 void init() {
@@ -30,7 +32,7 @@ bool top (int &n) {
 bool push (int n) {
 
 	bool risultatoOperazione;
-	lista nuovoNodo = new nodo;
+	lista nuovoNodo = new (nothrow) nodo;
 	if (nuovoNodo==NULL) {
 		risultatoOperazione = false;
 	}
@@ -59,9 +61,9 @@ bool pop () {
 	return risultatoOperazione;
 }
 
-    
-  
-
-
-
-
+void deinit() {
+    int tmp;
+	while(top(tmp)) {
+		pop();
+	}
+}

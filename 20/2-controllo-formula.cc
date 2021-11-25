@@ -7,7 +7,7 @@ int main() {
 
     init();
 
-    char buffer[100];
+    char buffer[101];
     bool corretta = true;
 
     cout << "inserisci l'espressione: " << endl;
@@ -21,18 +21,13 @@ int main() {
         carattereCorrente = buffer[indice];
 
         if (carattereCorrente == '(') {
-            push( (char) carattereCorrente);
+            push(carattereCorrente);
         }
         else if (carattereCorrente == ')') {
 
-            int valoreInt;
-            if (top(valoreInt)) {
-                
+            int tmp;
+            if (top(tmp)) {
                 pop();
-                char valoreChar = valoreInt;
-                if (valoreChar != '(') {
-                    corretta = false;
-                }
             }
             else {
                 corretta = false;
@@ -47,5 +42,8 @@ int main() {
     else {
         cout << "L'espressione non è corretta!" << endl;
     }
+
+    deinit();
+
     return 0;
 }
