@@ -1,24 +1,25 @@
 #ifndef CODA_H
 #define CODA_H
 
-#include <iostream>
-using namespace std;
-
-struct coda_nodo {
+struct nodoCoda {
 	int value;
-	coda_nodo* next;
+	nodoCoda* next;
 };
-typedef coda_nodo* coda_lista;
+typedef nodoCoda* listaCoda;
 
 struct coda {
-    coda_lista tail;
-    coda_lista head;
+    listaCoda tail;
+    listaCoda head;
 };
 
 void coda_init();
 bool coda_enqueue(int);
 bool coda_first(int &);
 bool coda_dequeue();
+void coda_deinit();
 void coda_print();
 
 #endif
+
+
+

@@ -8,18 +8,18 @@ int calcolaLunghezza(char parola[]);
 
 int main (int argc, char * argv[]) {
 
-    int valoreDiRitorno = 0;
-
     if (argc != 2) {
         cout << "Usage: ./a.out <input_file>" << endl;
-        valoreDiRitorno = 1;
+        exit(1);
     }
     else {
         int media = leggiECalcolaMedia(argv[1]);
-        cout << "la media è " << media << endl;
+        if (media != -1) {
+            cout << "la media è " << media << endl;
+        }
     }
 
-    return valoreDiRitorno;
+    return 0;
 }
     
 

@@ -1,11 +1,13 @@
+#include <iostream>
 #include "coda.h"
+
+using namespace std;
 
 static coda Q;
 
-static bool vuota() {
+static bool coda_vuota() {
   return (Q.head == NULL);
 }
-
 
 
 void coda_init() {
@@ -13,18 +15,17 @@ void coda_init() {
 }
 
 
-
 bool coda_enqueue(int n) {
   
     bool risultatoOperazione;
-    coda_lista nuovoNodo = new coda_nodo;
+    listaCoda nuovoNodo = new (nothrow) nodoCoda;
     if (nuovoNodo==NULL) {
         risultatoOperazione = false;
     }
     else {
         nuovoNodo->value=n;
         nuovoNodo->next=NULL;
-        if (vuota()) {
+        if (coda_vuota()) {
             Q.head=nuovoNodo;
         }
         else { 
@@ -39,7 +40,7 @@ bool coda_enqueue(int n) {
 
 bool coda_first(int &n) { 
     bool risultatoOperazione;
-    if (vuota()) {
+    if (coda_vuota()) {
         risultatoOperazione = false;
     }
     else {
@@ -52,11 +53,11 @@ bool coda_first(int &n) {
 
 bool coda_dequeue() { 
     bool risultatoOperazione;
-    if (vuota()) {
+    if (coda_vuota()) {
         risultatoOperazione = false;
     }
     else {
-        coda_lista primoNodo;
+        listaCoda primoNodo;
         primoNodo = Q.head;
         Q.head = Q.head->next;
         delete primoNodo; 
@@ -65,11 +66,17 @@ bool coda_dequeue() {
     return risultatoOperazione;
 }
 
+void coda_deinit() {
+    int tmp;
+	while(coda_first(tmp)) {
+		coda_dequeue();
+	}
+}
 
 void coda_print() {
 
-  if (!vuota()) {
-    coda_lista nodoCorrente=Q.head;
+  if (!coda_vuota()) {
+    listaCoda nodoCorrente=Q.head;
     do {
       cout << nodoCorrente->value << endl;
       nodoCorrente = nodoCorrente->next;

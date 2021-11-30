@@ -1,11 +1,13 @@
+#include <iostream>
 #include "pila.h"
 
-static pila_lista pila;
+using namespace std;
 
-static bool vuota () {
+static listaPila pila;
+
+static bool pila_vuota () {
 	return (pila == NULL);    
 }
-
 
 
 void pila_init() {
@@ -16,7 +18,7 @@ void pila_init() {
 bool pila_top (int &n) {
 	
 	bool risultatoOperazione;
-	if (vuota()) {
+	if (pila_vuota()) {
 		risultatoOperazione = false;
 	}
 	else {
@@ -30,7 +32,7 @@ bool pila_top (int &n) {
 bool pila_push (int n) {
 
 	bool risultatoOperazione;
-	pila_lista nuovoNodo = new pila_nodo;
+	listaPila nuovoNodo = new (nothrow) nodoPila;
 	if (nuovoNodo==NULL) {
 		risultatoOperazione = false;
 	}
@@ -47,11 +49,11 @@ bool pila_push (int n) {
 bool pila_pop () {
 	
 	bool risultatoOperazione;
-	if (vuota()) {
+	if (pila_vuota()) {
 		risultatoOperazione = false;
 	}
 	else {
-		pila_lista primoNodo = pila;
+		listaPila primoNodo = pila;
 		pila = pila->next;
 		delete primoNodo;
 		risultatoOperazione = true;
@@ -59,18 +61,20 @@ bool pila_pop () {
 	return risultatoOperazione;
 }
 
-    
+void pila_deinit() {
+    int tmp;
+	while(pila_top(tmp)) {
+		pila_pop();
+	}
+}
+
 void pila_print() {
 
-  if (!vuota()) {
-    pila_lista nodoCorrente = pila;
+  if (!pila_vuota()) {
+    listaPila nodoCorrente = pila;
     do {
       cout << nodoCorrente->value << endl;
       nodoCorrente = nodoCorrente->next;
     } while (nodoCorrente != NULL);
   }
 }
-
-
-
-

@@ -1,1 +1,0 @@
-realizzare una funzione che, data una matrice (labiritno), una cella di partenza e una cella di arrivo, restituisca 1 se è possibile raggiungere ll'arrivo dalla partenza passando solo per celle del labiritno di valore 0, valore 1 sono muri. utilizzare una pila
